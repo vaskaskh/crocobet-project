@@ -1,0 +1,36 @@
+<div class="workspace-header">
+  <h1 class="headline">პოსტები</h1>
+</div>
+
+<hr class="my-4" />
+
+@if (postData) {
+  <nz-table
+    #posts
+    class="mt-4"
+    [nzData]="postData"
+    nzSize="middle"
+    nzBordered
+    [nzFrontPagination]="false"
+  >
+    <thead>
+      <tr>
+        <th>სახელი</th>
+        <th>პოსტის სათაური</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (data of posts.data; track data.id) {
+        <tr>
+          <td>მომხმარებლის სახელი</td>
+          <td>{{ data.title }}</td>
+          <td class="cursor-pointer"  (click)="seeDetails(data)" >დეტალურად</td>
+
+        </tr>
+      }
+    </tbody>
+  </nz-table>
+} @else {
+  <h3>no data</h3>
+}

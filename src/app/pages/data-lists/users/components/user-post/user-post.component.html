@@ -1,0 +1,11 @@
+@let posts = userPosts | async;
+
+<div class="flex flex-wrap gap-4">
+  @for (post of posts; track post.id) {
+    <div class="w-full sm:w-[48%] lg:w-[31%]">
+      <nz-card [nzTitle]="post.title" class="h-full">
+        <p>{{ post.body }}</p>
+      </nz-card>
+    </div>
+  }
+</div>

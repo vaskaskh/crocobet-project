@@ -1,0 +1,64 @@
+<div class="workspace-header">
+  <h1 class="headline">მომხმარებლები</h1>
+</div>
+
+<hr class="my-4" />
+<input class="p-[8px] w-full border-2 border-solid  outline-none  rounded-md border-gray-200"
+       type="search"
+       placeholder="ძიება..."
+       [(ngModel)]="searchTerm"
+  >
+
+@if (filteredUsers) {
+  <nz-table
+    #users
+    class="mt-4"
+    [nzData]="filteredUsers"
+    nzSize="middle"
+    nzBordered
+    [nzFrontPagination]="false"
+  >
+    <thead>
+    <tr>
+      <th>სახელი</th>
+      <th>გვარი</th>
+      <th>ტელეფონის ნომერი</th>
+      <th>მეილი</th>
+      <th>კომპანიის დასახელება</th>
+      <th></th>
+    </tr>
+    </thead>
+    <tbody>
+      @for (data of users.data | filter:searchTerm ; track data.id) {
+        <tr>
+          <td>{{ data.name }}</td>
+          <td>{{ data.username }}</td>
+          <td>{{ data.phone  }}</td>
+          <td>{{ data.email  }}</td>
+          <td>{{ data.company.name }}</td>
+          <td>
+          <div class="flex justify-center gap-[10px] align-center">
+
+
+            <button
+              (click)="onPosts(data.id)"
+              class="bg-sky-500 hover:bg-sky-600 text-white border border-sky-700 px-4 py-2 rounded-lg shadow transition-transform hover:scale-105 cursor-pointer"
+            >
+              პოსტები
+            </button>
+
+            <button
+              (click)="onTodo(data.id)"
+              class="bg-sky-500 hover:bg-sky-600 text-white border border-sky-700 px-4 py-2 rounded-lg shadow transition-transform hover:scale-105 cursor-pointer"
+            >
+              Todo
+            </button>
+          </div>
+          </td>
+        </tr>
+      }
+    </tbody>
+  </nz-table>
+}@else {
+  <h3>no data</h3>
+}

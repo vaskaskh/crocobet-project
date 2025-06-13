@@ -1,1 +1,37 @@
-/* You can add global styles to this file, and also import other style files */
+@import "tailwindcss";
+
+body * {
+  font-family: NotoSans, serif !important;
+  scrollbar-width: thin;
+}
+
+ol,
+ul {
+  list-style: none;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+hr {
+  opacity: 0.3;
+}
+
+th.actions-head {
+  width: 0;
+}
+
+td.actions-cell {
+  text-align: center;
+}
+
+
+.workspace-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  .headline {
+    font-size: large;
+  }
+}
+

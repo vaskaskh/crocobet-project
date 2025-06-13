@@ -1,0 +1,26 @@
+@let todos = userTodos | async;
+
+@for (todo of todos; track todo.id) {
+      <div class="workspace-header">
+        <h1 class="headline">ჩემი მიმდინარე დავალებები</h1>
+      </div>
+
+      <hr class="my-4" />
+  <nz-card class="rounded-2xl shadow-md p-4 w-full max-w-md bg-white">
+    <div class="flex justify-between items-center">
+      <div>
+        <h1 class="text-xl font-semibold text-gray-800">{{ todo.title }}</h1>
+
+      </div>
+      <nz-tag
+        [nzColor]="todo.completed ? 'green' : 'red'"
+        class="text-white font-medium text-sm px-3 py-1 rounded"
+      >
+        {{ todo.completed ? 'შესრულებული' : 'შესასრულებელი' }}
+      </nz-tag>
+    </div>
+  </nz-card>
+
+
+}
+
